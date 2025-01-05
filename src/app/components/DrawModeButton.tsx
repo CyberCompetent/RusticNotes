@@ -1,22 +1,22 @@
 import React from 'react';
-import SmallButton from './templates/SmallButton';
+import SmallButton from './templates/SmallButton'; // Import the SmallButton component
 
 interface ButtonProps {
   isActive: boolean;
   onClick: () => void;
 }
 
-const SelectModeButton: React.FC<ButtonProps> = ({ isActive, onClick }) => {
+const DrawModeButton: React.FC<ButtonProps> = ({ isActive, onClick }) => {
   return (
     <SmallButton
       id="select-mode-button"
-      svg="select_all"
+      svg="draw"
       onClick={onClick}
       isActive={isActive} // Pass isActive to SmallButton
     >
-      Select Mode
+      Draw Mode
     </SmallButton>
   );
 };
 
-export default SelectModeButton;
+export default DrawModeButton;
