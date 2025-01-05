@@ -3,7 +3,7 @@ import SmallButton from './templates/SmallButton'; // Import the SmallButton com
 
 const exportee: React.FC = () => {
   return (
-    <SmallButton id="settings-button" svg="settings">Settings
+    <SmallButton id="select-mode-button" svg="select_all">Select Mode
     </SmallButton>
   );
 };
