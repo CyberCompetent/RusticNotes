@@ -1,24 +1,14 @@
-import SettingsButton from './components/SettingsButton';
 
-import FileTree from './components/FileTree';
 import TopBar from './components/TopBar'
+import SideBar from './components/SideBar'
 
-import SortButton from './components/SortButton';
-import SearchBar from './components/SearchBar';
 
 
 
 export default function HomePage() {
   return (
     <div className="flex h-screen font-sans"> {/* BODY */}
-      <div className="w-64 bg-gray-600 text-white flex flex-col box-border"> {/* Sidebar */}
-        <div className="p-5 bg-gray-700 flex flex-col gap-2 flex-shrink-0 box-border"> {/* Controls */}
-          <SettingsButton /> {/* Settings Button */}
-          <SortButton /> {/* Sort Button */}
-          <SearchBar /> {/* Search Bar */}
-        </div>
-        <FileTree />
-      </div>
+      <SideBar />
       <div className="flex flex-col flex-grow"> {/* Main Content */}
         <TopBar />
         <div className="flex-grow p-0"> {/* Content Area */}
