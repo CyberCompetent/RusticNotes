@@ -12,49 +12,30 @@ interface FileItemProps {
 }
 
 const FileItem: React.FC<FileItemProps> = ({ file, onToggleExpand, isExpanded = false }) => {
-  const [isHovered, setIsHovered] = useState(false); // Hover state
-  const [isArrowRotated, setIsArrowRotated] = useState(isExpanded); // Arrow rotation state
+  const [isHovered, setIsHovered] = useState(false);
 
   const fileIcon = file.type === "workspace" ? "workspaces" : "description";
-  const arrowIcon = isArrowRotated ? "keyboard_arrow_down" : "keyboard_arrow_right";
-
-  const handleArrowClick = () => {
-    setIsArrowRotated((prev) => !prev); // Toggle the rotation state
-    onToggleExpand?.(); // Trigger parent callback to show/hide children
-  };
+  const arrowIcon = isExpanded ? "keyboard_arrow_down" : "keyboard_arrow_right";
 
   return (
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative" // Ensure that the parent div is set to relative to control positioning of inner elements
+      className="relative"
     >
       <SmallButton
         id={`file-${file.name}`}
-        svg={isHovered ? arrowIcon : fileIcon} // Show arrow on hover, file icon otherwise
-        onClick={() => handleArrowClick()} // Use an inline function to call handleArrowClick without arguments
+        svg={isHovered ? arrowIcon : fileIcon}
+        onClick={onToggleExpand} // Correctly call the parent function
         isActive={isExpanded}
         hover
-        buttons={isHovered ? "plus option" : undefined} // Show icons only on hover
+        buttons={isHovered ? "plus option" : undefined}
         className="w-full text-left p-2 flex items-center justify-between"
       >
-        {/* File name - truncates only on hover */}
-        <span
-          className={`ml-2 flex-grow transition-all duration-200 ${isHovered ? "truncate" : ""}`}
-          title={file.name}
-        >
+        <span className="ml-2 flex-grow truncate" title={file.name}>
           {file.name}
         </span>
       </SmallButton>
-
-      {/* Children - only visible when expanded */}
-      {file.children && isExpanded && (
-        <ul className="pl-4">
-          {file.children.map((child, index) => (
-            <FileItem key={index} file={child} onToggleExpand={onToggleExpand} isExpanded={isExpanded} />
-          ))}
-        </ul>
-      )}
     </div>
   );
 };

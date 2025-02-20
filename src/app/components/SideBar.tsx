@@ -4,7 +4,7 @@ import ProfileButton from './ProfileButton';
 import SortButton from './SortButton';
 import SearchBar from './SearchBar';
 import SettingsButton from './SettingsButton';
-import FileTree from './FileTree2';
+import FileTree from './FileTree';
 
 const SideBar: React.FC = () => {
   // State for active profile button
