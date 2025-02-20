@@ -52,17 +52,16 @@ const FileTree: React.FC = () => {
 const FileTreeNode: React.FC<{ file: File }> = ({ file }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Updated toggleExpand to match the expected type
+  // Toggle only this node
   const toggleExpand = () => {
     setIsExpanded((prev) => !prev);
   };
 
   return (
     <li>
-      {/* Pass the toggleExpand handler and expanded state to FileItem */}
       <FileItem
         file={file}
-        onToggleExpand={toggleExpand} // Matches the type () => void
+        onToggleExpand={toggleExpand}
         isExpanded={isExpanded}
       />
       {file.children && isExpanded && (
@@ -75,5 +74,6 @@ const FileTreeNode: React.FC<{ file: File }> = ({ file }) => {
     </li>
   );
 };
+
 
 export default FileTree;

@@ -19,7 +19,6 @@ const FileTree: React.FC = () => { //Building the algorithm which will contain t
     return ( //everything inside here gets exported from the component to what ever wants to use it
     <SmallButton //calling our SmallButton Component and declaring the values for its props 
         id="test"
-        svg={isHovered ? arrowIcon : fileIcon}
         onClick={handleClick} // Pass the click handler
         isActive={isActive}
     >
